@@ -1,0 +1,134 @@
+{
+  "project_info": {
+    "project_number": "535882691875",
+    "project_id": "kellysadvicecolumn",
+    "storage_bucket": "kellysadvicecolumn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:535882691875:android:df481048e9a31c0ac30896",
+        "android_client_info": {
+          "package_name": "com.tasktakers.tell_kelly"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "535882691875-5nh1m9niu129su4bdfnlmtev5uca9oq3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tasktakers.tell_kelly",
+            "certificate_hash": "aededd1ecdba17c2f8a384a7b727167571e2684b"
+          }
+        },
+        {
+          "client_id": "535882691875-9t15gusq2iaafg2p4gm8m08jitdbagkh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj6iZyVR_aDDDRI-qnKu5W1JXZl5PT8po"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "535882691875-9t15gusq2iaafg2p4gm8m08jitdbagkh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "535882691875-7uka00dno0vr6m5tsu5jot2nvv4ebg1o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tasktakers.tellKelly"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:535882691875:android:740f40905d74f402c30896",
+        "android_client_info": {
+          "package_name": "com.tasktakers.tellkelly"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "535882691875-9t15gusq2iaafg2p4gm8m08jitdbagkh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj6iZyVR_aDDDRI-qnKu5W1JXZl5PT8po"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "535882691875-9t15gusq2iaafg2p4gm8m08jitdbagkh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "535882691875-7uka00dno0vr6m5tsu5jot2nvv4ebg1o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tasktakers.tellKelly"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:535882691875:android:093c4378fe392db5c30896",
+        "android_client_info": {
+          "package_name": "com.tellkellyapp.tell_kelly_advice_column_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "535882691875-l125etll5rlgddglpuia9b0lmfvqndru.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tellkellyapp.tell_kelly_advice_column_app",
+            "certificate_hash": "b10257bf64631629f3d7cf18b50cc987df4ee929"
+          }
+        },
+        {
+          "client_id": "535882691875-9t15gusq2iaafg2p4gm8m08jitdbagkh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj6iZyVR_aDDDRI-qnKu5W1JXZl5PT8po"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "535882691875-9t15gusq2iaafg2p4gm8m08jitdbagkh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "535882691875-7uka00dno0vr6m5tsu5jot2nvv4ebg1o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tasktakers.tellKelly"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
