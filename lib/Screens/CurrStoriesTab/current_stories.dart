@@ -7,6 +7,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tellkelly/Common/functions.dart';
 import 'package:tellkelly/Services/AdMob/loading_screen.dart';
+import 'package:tellkelly/Style/app_text.dart';
 import 'package:tellkelly/Style/style_sheet.dart';
 
 class CurrentStories extends StatefulWidget {
@@ -56,7 +57,7 @@ class _CurrentStoriesState extends State<CurrentStories>
               height: size.height * 0.08,
               color: Colors.black,
               child: Text(
-                " Current Stories",
+                " $currentStories",
                 style: GoogleFonts.zillaSlab(
                     color: secondaryColor, fontSize: size.width * 0.07),
                 textAlign: TextAlign.center,
@@ -166,7 +167,7 @@ class _CurrentStoriesState extends State<CurrentStories>
 
                                                 children: [
                                                   Text(
-                                                      "Read Story",
+                                                      "$readStory",
                                                       style: GoogleFonts.ruda(
                                                           color:
                                                           secondaryColor,
@@ -209,7 +210,7 @@ class _CurrentStoriesState extends State<CurrentStories>
                           }),
                     );
                   } else if (snapshot.hasError) {
-                    return Text("Network Error");
+                    return Text("$networkError");
                   } else {
                     return Container(
                       width: size.width * 0.5,

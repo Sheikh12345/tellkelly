@@ -6,8 +6,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:stripe_payment/stripe_payment.dart';
 import 'package:tellkelly/Services/StripePayment/stripe_service.dart';
+import 'package:tellkelly/Style/app_text.dart';
 import 'package:tellkelly/Style/style_sheet.dart';
-import '../../../../stripe_model.dart';
+import '../../../../Model/stripe_model.dart';
 
 class RemoveAds extends StatefulWidget {
   final String amount;
@@ -40,7 +41,7 @@ class _RemoveAdsState extends State<RemoveAds> {
 
   payViaNewCard(BuildContext context) async {
     ProgressDialog dialog = new ProgressDialog(context);
-    dialog.style(message: 'Please wait...');
+    dialog.style(message: '$pleaseWait...');
     await dialog.show();
     var response = await StripeService.payWithNewCard(
         amount: '${widget.amount}00', currency: 'USD');
@@ -63,7 +64,7 @@ class _RemoveAdsState extends State<RemoveAds> {
         backgroundColor: Colors.black,
         centerTitle: true,
         title: Text(
-          "Payment",
+          "$payment",
           style: GoogleFonts.courgette(
               color: primaryColor, fontSize: size.width * 0.063),
         ),
@@ -101,7 +102,7 @@ class _RemoveAdsState extends State<RemoveAds> {
                           errorStyle: errorText(),
                           focusedErrorBorder: errorFieldBorder,
                           hintStyle: formFieldHintText(),
-                          labelText: "Card Number",
+                          labelText: "$cardNumberTxt",
                           focusedBorder: formFieldBorder,
                           labelStyle: formFieldLabelText(),
                           enabledBorder: formFieldBorder,
@@ -125,7 +126,7 @@ class _RemoveAdsState extends State<RemoveAds> {
                           errorStyle: errorText(),
                           focusedErrorBorder: errorFieldBorder,
                           hintStyle: formFieldHintText(),
-                          labelText: "Expiry Date (MM/YY)",
+                          labelText: "$expiryDateTxt",
                           focusedBorder: formFieldBorder,
                           labelStyle: formFieldLabelText(),
                           enabledBorder: formFieldBorder,
@@ -152,7 +153,7 @@ class _RemoveAdsState extends State<RemoveAds> {
                           errorStyle: errorText(),
                           focusedErrorBorder: errorFieldBorder,
                           hintStyle: formFieldHintText(),
-                          labelText: "CVV",
+                          labelText: "$CVV",
                           focusedBorder: formFieldBorder,
                           labelStyle: formFieldLabelText(),
                           enabledBorder: formFieldBorder,
@@ -176,7 +177,7 @@ class _RemoveAdsState extends State<RemoveAds> {
                           errorStyle: errorText(),
                           focusedErrorBorder: errorFieldBorder,
                           hintStyle: formFieldHintText(),
-                          labelText: "Card Holder",
+                          labelText: "$cardHolder",
                           focusedBorder: formFieldBorder,
                           labelStyle: formFieldLabelText(),
                           enabledBorder: formFieldBorder,
@@ -199,12 +200,12 @@ class _RemoveAdsState extends State<RemoveAds> {
                             payViaExistingCard(
                                 expiry: expiryDate, cardNum: cardNumber, context: context);
                           }else{
-                            final snackBar = SnackBar(content: Text('Expiry date is incorrect',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: errorFieldColor,);
+                            final snackBar = SnackBar(content: Text('$expiryDateIsIncorrect',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: errorFieldColor,);
                             ScaffoldMessenger.of(context).showSnackBar(snackBar);
                           }
                         },
                         color: primaryColor,
-                        child: Text("Subscribe",style:GoogleFonts.ruda(
+                        child: Text("$subscribeTxt",style:GoogleFonts.ruda(
                           color: Colors.black,
                           fontSize: size.width * 0.034,
                           fontWeight: FontWeight.w600,
@@ -236,7 +237,7 @@ class _RemoveAdsState extends State<RemoveAds> {
   payViaExistingCard(
       {BuildContext context, String expiry, String cardNum}) async {
     ProgressDialog dialog = new ProgressDialog(context);
-    dialog.style(message: 'Please wait...');
+    dialog.style(message: '$pleaseWait...');
     await dialog.show();
     var expiryArr = expiry.split('/');
     CreditCard stripeCard = CreditCard(
@@ -259,11 +260,11 @@ class _RemoveAdsState extends State<RemoveAds> {
         update({
           "subscription":1
         });
-        final snackBar = SnackBar(content: Text('You have successfully purchased subscription',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: secondaryColor,);
+        final snackBar = SnackBar(content: Text('$successfullyPurchased',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: secondaryColor,);
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
 
-        final snackBar2 = SnackBar(content: Text('Restart Tell Kelly App',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: secondaryColor,);
+        final snackBar2 = SnackBar(content: Text('$restartTellKelly',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: secondaryColor,);
         ScaffoldMessenger.of(context).showSnackBar(snackBar2);
 
       }

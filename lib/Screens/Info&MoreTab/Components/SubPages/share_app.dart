@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tellkelly/Style/app_text.dart';
 import 'package:tellkelly/Style/style_sheet.dart';
 
 import '../Info_button.dart';
@@ -18,7 +19,7 @@ class _ShareAppState extends State<ShareApp> {
 
   Future<void> share(String text) async {
     await FlutterShare.share(
-        title: 'Share App',
+        title: '$shareAppTxt',
         text: '$text',
         linkUrl: 'app web link will come here',
         chooserTitle: 'Tell Kelly',

@@ -10,8 +10,9 @@ import 'package:sign_button/create_button.dart';
 import 'package:tellkelly/Common/functions.dart';
 import 'package:tellkelly/Providers/provider_error_model.dart';
 import 'package:tellkelly/Screens/Auth/singup.dart';
-import 'package:tellkelly/Screens/Home/homes_screen.dart';
+import 'package:tellkelly/Screens/Home/home_screen.dart';
 import 'package:tellkelly/Services/firebase_authentication.dart';
+import 'package:tellkelly/Style/app_text.dart';
 import 'package:tellkelly/Style/style_sheet.dart';
 
 import 'components/google_button.dart';
@@ -50,7 +51,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                 SizedBox(
                   height: size.height*0.04,
                 ),
-                Text("Sign in",style: GoogleFonts.courgette(color: primaryColor, fontSize: size.width*0.05),),
+                Text("$signInText",style: GoogleFonts.courgette(color: primaryColor, fontSize: size.width*0.05),),
                 SizedBox(
                   height: size.height*0.01,
                 ),
@@ -71,7 +72,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                       errorStyle: errorText(),
                       focusedErrorBorder: errorFieldBorder,
                       hintStyle: formFieldHintText(),
-                      labelText: "Email",
+                      labelText: "$email",
                       focusedBorder: formFieldBorder,
                       labelStyle: formFieldLabelText(),
                       enabledBorder: formFieldBorder,
@@ -96,7 +97,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                       errorStyle: errorText(),
                       focusedErrorBorder: errorFieldBorder,
                       hintStyle: formFieldHintText(),
-                      labelText: "Password",
+                      labelText: "$password",
                       focusedBorder: formFieldBorder,
                       labelStyle: formFieldLabelText(),
                       enabledBorder: formFieldBorder,
@@ -109,7 +110,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                 MaterialButton(
                     color: secondaryColor,
                     child: Text(
-                      'Sign in',
+                      '$signInText',
                       style: reviewButton(),
                     ),
                     onPressed: () async {
@@ -137,7 +138,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                     ):Container(
                       height: size.height*0.05,
                       child: Text(
-                      'Or',
+                      '$or',
                       style: TextStyle(
                         color: Colors.grey,
                       ),
@@ -192,7 +193,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      'Don\'t have an account?',
+                      '$dontHaveAnAccount',
                       style: TextStyle(
                         color: secondaryColor,
                       ),
@@ -204,7 +205,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                           screenPush(context,SignUp());
                         },
                           child: Text(
-                            'Sign Up',
+                            '$singUp',
                             style: TextStyle(
                               color: primaryColor,
                               fontWeight: FontWeight.bold,
@@ -227,7 +228,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
        if(EmailValidator.validate(text)){
          _emailErr = null;
        }else{
-         _emailErr =  "Email is not valid";
+         _emailErr =  "$emailIsNotValid";
        }
      });
     }else if(code ==2){
@@ -235,7 +236,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
      if(text.length>5){
        _passErr =  null;
      }else{
-       _passErr = "Password is short";
+       _passErr = "$passwordIsShort";
      }
    });
     }
@@ -262,7 +263,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
         }
       });
     }else{
-      final snackBar = SnackBar(content: Text('Login Details Required.',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: errorFieldColor,);
+      final snackBar = SnackBar(content: Text('$loginDetailsRequired.',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: errorFieldColor,);
   ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }

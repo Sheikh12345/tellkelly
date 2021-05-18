@@ -2,6 +2,8 @@
     package="com.tasktakers.tellkelly"
     xmlns:tools="http://schemas.android.com/tools"
     >
+
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="tellkelly"
         android:icon="@mipmap/ic_launcher"
@@ -87,7 +89,7 @@
                <data android:scheme="${applicationId}.braintree" />
            </intent-filter>
        </activity>
-
+       
     </application>
 
     <uses-permission android:name="android.permission.INTERNET"/>

@@ -4,19 +4,16 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:tellkelly/Common/functions.dart';
 import 'package:tellkelly/Screens/Auth/login.dart';
 import 'package:tellkelly/Screens/CurrStoriesTab/current_stories.dart';
 import 'package:tellkelly/Screens/PreStoriesTab/previous_stories.dart';
 import 'package:tellkelly/Screens/ReadStoryPage/read_story.dart';
 import 'package:tellkelly/Services/AdMob/loading_screen.dart';
+import 'package:tellkelly/Style/app_text.dart';
 import 'package:tellkelly/Style/style_sheet.dart';
 
-import '../../main.dart';
 
 class HomeTab extends StatefulWidget {
   @override
@@ -61,28 +58,28 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
       child: Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.notifications,color: Colors.white,),
-            onPressed: (){
-              flutterLocalNotificationsPlugin.show(
-                  0,
-                  "New Stories",
-                  "Tell Kelly take to new stories for you.",
-                  NotificationDetails(
-                      android: AndroidNotificationDetails(channel.id, channel.name, channel.description,
-                          importance: Importance.high,
-                          color: Colors.blue,
-                          playSound: true,
-                          channelAction: AndroidNotificationChannelAction.update,
-                          icon: '@mipmap/icon',
-                       enableVibration: true
-                      )));
-            },
-          ),
+          // leading: IconButton(
+            // icon: Icon(Icons.notifications,color: Colors.white,),
+            // onPressed: (){
+            //   flutterLocalNotificationsPlugin.show(
+            //       0,
+            //       "New Stories",
+            //       "Tell Kelly take to new stories for you.",
+            //       NotificationDetails(
+            //           android: AndroidNotificationDetails(channel.id, channel.name, channel.description,
+            //               importance: Importance.high,
+            //               color: Colors.blue,
+            //               playSound: true,
+            //               channelAction: AndroidNotificationChannelAction.update,
+            //               icon: '@mipmap/icon',
+            //            enableVibration: true
+            //           )));
+            // },
+          // ),
           backgroundColor: Colors.black,
           centerTitle: true,
           title: Text(
-            "Tell Kelly",
+            "$appName",
             style: GoogleFonts.courgette(
                 color: primaryColor, fontSize: size.width * 0.07),
           ),
@@ -98,7 +95,7 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      "Welcome ${auth.currentUser.displayName != null ? auth.currentUser.displayName.toString() : name ?? '$name'}",
+                      "$welcome ${auth.currentUser.displayName != null ? auth.currentUser.displayName.toString() : name ?? '$name'}",
                       style: GoogleFonts.zillaSlab(
                           color: secondaryColor,
                           fontSize: size.width * 0.04,
@@ -111,7 +108,7 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
                             screenPushRep(context, LoginPage());
                             final snackBar = SnackBar(
                               content: Text(
-                                'Successful Logout',
+                                '$successfulLogOut',
                                 style: GoogleFonts.zillaSlab(
                                     color: Colors.black,
                                     fontWeight: FontWeight.w500,
@@ -126,7 +123,7 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
                                 .showSnackBar(snackBar);
                           });
                         },
-                        child: Text("Logout", style: logoutButton())),
+                        child: Text("$logout", style: logoutButton())),
                   ],
                 ),
                 Container(
@@ -144,7 +141,7 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Current Stories",
+                        "$currentStories",
                         style: GoogleFonts.zillaSlab(
                             color: primaryColor, fontSize: size.width * 0.05),
                       ),
@@ -154,7 +151,7 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
                         },
                         child: Row(
                           children: [
-                            Text("view all current stories ",
+                            Text("$viewAllStories ",
                                 style: GoogleFonts.ruda(
                                     color: secondaryColor,
                                     letterSpacing: 0.1,
@@ -173,7 +170,7 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
 
                 StreamBuilder(
                     stream: FirebaseFirestore.instance
-                        .collection("Live Stories")
+                        .collection("$liveStories")
                         // .orderBy("Date Added")
                         .snapshots(),
                     builder: (_, snapshot) {
@@ -307,7 +304,7 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
                                                 child: GestureDetector(
                                                   child: Row(
                                                     children: [
-                                                      Text("  Read Story",
+                                                      Text("  $readStory",
                                                           style: GoogleFonts.ruda(
                                                               color:
                                                                   secondaryColor,
@@ -366,7 +363,7 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
                               }),
                         );
                       } else if (snapshot.hasError) {
-                        return Text("Network Error");
+                        return Text("networkError");
                       } else {
                         return Center(
                             child: Container(
@@ -390,7 +387,7 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Previous Stories",
+                        "$previousStories",
                         style: GoogleFonts.zillaSlab(
                             color: primaryColor, fontSize: size.width * 0.05),
                       ),
@@ -400,7 +397,7 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
                         },
                         child: Row(
                           children: [
-                            Text("view all previous stories ",
+                            Text("$viewAllPreviousStories ",
                                 style: GoogleFonts.ruda(
                                     color: secondaryColor,
                                     letterSpacing: 0.1,
@@ -547,7 +544,7 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
                                                 child: GestureDetector(
                                                   child: Row(
                                                     children: [
-                                                      Text("Read Story",
+                                                      Text("$readStory",
                                                           style: GoogleFonts.ruda(
                                                               color:
                                                                   secondaryColor,
@@ -598,7 +595,7 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
                               }),
                         );
                       } else if (snapshot.hasError) {
-                        return Text("Network Error");
+                        return Text("$networkError");
                       } else {
                         return Center(
                             child: Container(

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,12 +12,14 @@ import 'package:tellkelly/Common/functions.dart';
 import 'package:tellkelly/Screens/Info&MoreTab/Components/SubPages/acknowledgement_article.dart';
 import 'package:tellkelly/Screens/Info&MoreTab/Components/SubPages/remove_ads.dart';
 import 'package:tellkelly/Services/AdMob/ad_state.dart';
+import 'package:tellkelly/Style/app_text.dart';
 import 'package:tellkelly/Style/style_sheet.dart';
 import 'Components/Info_button.dart';
 import 'Components/SubPages/message_us.dart';
 import 'Components/SubPages/news_and_updates.dart';
 import 'Components/SubPages/share_app.dart';
 import 'Components/SubPages/the_rundown.dart';
+import 'package:http/http.dart' as http;
 
 class InfoMore extends StatefulWidget {
   @override
@@ -23,6 +27,9 @@ class InfoMore extends StatefulWidget {
 }
 
 class _InfoMoreState extends State<InfoMore> {
+  final cloudFunctionUrl =
+      'https://us-central1-kellysadvicecolumn.cloudfunctions.net/helloWorld';
+
   var _rating = 0.0;
   String userName;
   String subscriptionPrice;
@@ -83,7 +90,7 @@ class _InfoMoreState extends State<InfoMore> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Info & More",
+          "$infoAndMoreText",
           style: GoogleFonts.courgette(
               fontSize: size.width * 0.06, color: primaryColor),
         ),
@@ -99,55 +106,55 @@ class _InfoMoreState extends State<InfoMore> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "Select Category",
+              "$selectCategory",
               style: GoogleFonts.ruda(
                   color: secondaryColor, fontSize: size.width * 0.04),
               textAlign: TextAlign.center,
             ),
             InfoButton(
-              text: "The Rundown",
+              text: "$theRundown",
               onPressed: () {
                 screenPush(context, TheRundown());
               },
               value: 0.35,
             ),
             InfoButton(
-              text: "News + Updates",
+              text: "$newsPlusUpdate",
               onPressed: () {
                 screenPush(context, NewsAndUpdates());
               },
               value: 0.33,
             ),
             InfoButton(
-              text: "Acknowledgements Article",
+              text: "$ackArticle",
               onPressed: () {
                 screenPush(context, AcknowledgementsPage());
               },
               value: 0.252,
             ),
             InfoButton(
-              text: "Message Us",
+              text: "$messageUs",
               onPressed: () {
                 screenPush(context, MessageUs());
               },
               value: 0.365,
             ),
             InfoButton(
-              text: "Rate The App",
+              text: "$rateTheApp",
               onPressed: () {
                 _showDialog(size, context);
               },
               value: 0.355,
             ),
             InfoButton(
-              text: "Share App",
+              text: "$shareApp",
               onPressed: () {
                 screenPush(context, ShareApp());
               },
               value: 0.355,
             ),
             InfoButton(
-              text: "Remove Ads ( \$$subscriptionPrice )",
+              text: "$removeAds ( \$$subscriptionPrice )",
               onPressed: () {
                 choosePaymentMethodDialog(size, context);
                 // screenPush(context, RemoveAds());
@@ -167,7 +174,7 @@ class _InfoMoreState extends State<InfoMore> {
                       height: _bannerAd.size.height.toDouble(),
                       width: _bannerAd.size.width.toDouble(),
                       child: Container(
-                        child: Text("Purchased Subscription to remove Ads",
+                        child: Text("$purchasedSubscription",
                             style: GoogleFonts.abel(
                               color: Colors.white,
                             )),
@@ -201,7 +208,7 @@ class _InfoMoreState extends State<InfoMore> {
                     width: size.width * 0.46,
                     child: Image.asset("images/icon.png")),
                 Text(
-                  "Tell Kelly",
+                  "$appName",
                   style: GoogleFonts.ruda(
                       color: Colors.black,
                       fontSize: size.width * 0.07,
@@ -210,7 +217,7 @@ class _InfoMoreState extends State<InfoMore> {
                 SizedBox(
                   height: size.height * 0.01,
                 ),
-                Text("Use stars to rate the Tell Kelly App.",
+                Text("$useStarsToRateTheTellKellyApp",
                     style: GoogleFonts.ruda(
                         color: Colors.black,
                         fontSize: size.width * 0.035,
@@ -235,7 +242,7 @@ class _InfoMoreState extends State<InfoMore> {
                   height: size.height * 0.02,
                 ),
                 Text(
-                  "Please share a comment (optional)",
+                  "$pleaseShareAComment",
                   style: GoogleFonts.ruda(
                       color: Colors.grey[700],
                       fontSize: size.width * 0.041,
@@ -256,7 +263,7 @@ class _InfoMoreState extends State<InfoMore> {
                   },
                   color: Colors.blue,
                   child: Text(
-                    "Send Review",
+                    "$sendReview",
                     style: GoogleFonts.ruda(color: Colors.white),
                   ),
                 ),
@@ -275,17 +282,38 @@ class _InfoMoreState extends State<InfoMore> {
         "message": _controllerMessage.text,
         "rating": _rating
       }).whenComplete(() {
-
-        final snackBar = SnackBar(content: Text('Review Sent',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: secondaryColor,);
+        final snackBar = SnackBar(
+          content: Text(
+            '$reviewSent',
+            style: GoogleFonts.zillaSlab(
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+                letterSpacing: 0.8),
+          ),
+          duration: Duration(
+            seconds: 1,
+          ),
+          backgroundColor: secondaryColor,
+        );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
         Navigator.pop(context);
       });
     } else {
-
-      final snackBar = SnackBar(content: Text('Rating is empty',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: errorFieldColor,);
+      final snackBar = SnackBar(
+        content: Text(
+          '$ratingIsEmpty',
+          style: GoogleFonts.zillaSlab(
+              color: Colors.black,
+              fontWeight: FontWeight.w500,
+              letterSpacing: 0.8),
+        ),
+        duration: Duration(
+          seconds: 1,
+        ),
+        backgroundColor: errorFieldColor,
+      );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-
     }
   }
 
@@ -304,7 +332,7 @@ class _InfoMoreState extends State<InfoMore> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  "Payment option",
+                  "$paymentOption",
                   style: GoogleFonts.ruda(
                       color: Colors.black,
                       fontSize: size.width * 0.06,
@@ -315,8 +343,8 @@ class _InfoMoreState extends State<InfoMore> {
                     InkWell(
                       onTap: () {
                         Navigator.pop(context);
-                        paymentByPaypal(context);
-                           },
+                        paymentByPayPal(context);
+                      },
                       child: Container(
                         margin: EdgeInsets.only(
                             top: size.height * 0.06,
@@ -328,8 +356,11 @@ class _InfoMoreState extends State<InfoMore> {
                     InkWell(
                       onTap: () {
                         Navigator.pop(context);
-                        screenPush(context, RemoveAds(amount: subscriptionPrice,));
-
+                        screenPush(
+                            context,
+                            RemoveAds(
+                              amount: subscriptionPrice,
+                            ));
                       },
                       child: Container(
                         margin: EdgeInsets.only(
@@ -350,25 +381,48 @@ class _InfoMoreState extends State<InfoMore> {
     );
   }
 
-  paymentByPaypal(BuildContext context)async{
-   var request = BraintreeDropInRequest(
-     tokenizationKey:'sandbox_24r353xj_v4s2446p6rddt683',
-     collectDeviceData: true,
-     cardEnabled: true,
-     paypalRequest: BraintreePayPalRequest(
-       amount: subscriptionPrice,
-       displayName: "Tell Kelly",
-     )
-   );
+  paymentByPayPal(BuildContext context) async {
+    var request = BraintreeDropInRequest(
+        tokenizationKey: 'sandbox_jy969tfn_rprz9k6dvjxdbs47',
+        collectDeviceData: true,
+        cardEnabled: true,
+        paypalRequest: BraintreePayPalRequest(
+            amount: subscriptionPrice,
+            displayName: "Tell Kelly",
+            currencyCode: "USD"));
 
-   BraintreeDropInResult result = await BraintreeDropIn.start(request);
-   if(result!=null){
-     print(result.paymentMethodNonce.description);
-     print(result.paymentMethodNonce.nonce);
-   }
+    BraintreeDropInResult result = await BraintreeDropIn.start(request);
+    if (result != null) {
+      print(result.paymentMethodNonce.description);
+      print(result.paymentMethodNonce.nonce);
+      final http.Response response = await http.post(Uri.tryParse(
+          '$cloudFunctionUrl?=${result.paymentMethodNonce.nonce}&device_data=${result.deviceData}'));
+      final payResult = jsonDecode(response.body);
+      if (payResult['result'] == 'success') {
+        FirebaseFirestore.instance
+            .collection("Users")
+            .doc(FirebaseAuth.instance.currentUser.uid)
+            .update({"subscription": 1});
+
+        final snackBar = SnackBar(
+          content: Text(
+            '$successfullyPurchased',
+            style: GoogleFonts.zillaSlab(
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+                letterSpacing: 0.8),
+          ),
+          duration: Duration(
+            seconds: 1,
+          ),
+          backgroundColor: secondaryColor,
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      } else {
+        print("error => " + payResult['result']);
+      }
+    }
   }
-
-
 }
 
 /// Info Button design

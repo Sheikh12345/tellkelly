@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tellkelly/Style/app_text.dart';
 import 'package:tellkelly/Style/style_sheet.dart';
 
 class MessageUs extends StatefulWidget {
@@ -45,7 +46,7 @@ class _MessageUsState extends State<MessageUs> {
             },
           ),
           title: Text(
-            "Info & More - Message Us",
+            "$infoAndMoreTxt",
             style: headerText15(size: size.width * 0.04),
             textAlign: TextAlign.left,
             overflow: TextOverflow.visible,
@@ -63,7 +64,7 @@ class _MessageUsState extends State<MessageUs> {
                   color: Colors.grey,
                 ),
                 Text(
-                  "Message Us",
+                  "$messageUs",
                   style: GoogleFonts.zillaSlab(
                       color: secondaryColor, fontSize: size.width * 0.07),
                 ),
@@ -71,7 +72,7 @@ class _MessageUsState extends State<MessageUs> {
                   width: size.width,
                   alignment: Alignment.center,
                   child: Text(
-                    "You can message the team here directly. If we haven't covered something business commerce or what you think will make our app sublime.",
+                    "$messageTxt",
                     style: GoogleFonts.zillaSlab(
                         color: primaryColor, fontSize: size.width * 0.041),
                   ),
@@ -110,7 +111,7 @@ class _MessageUsState extends State<MessageUs> {
                       border: InputBorder.none,
                       errorStyle: errorText(),
                       hintStyle: formFieldHintText(),
-                      hintText: "Message ",
+                      hintText: "$message ",
                       labelStyle: formFieldLabelText(),
                     ),
                     onChanged: (value) {},
@@ -129,7 +130,7 @@ class _MessageUsState extends State<MessageUs> {
                       children: [
                         Icon(Icons.send),
                         SizedBox(width: size.width * 0.01),
-                        Text('  SEND'),
+                        Text('  $send'),
                       ],
                     ),
                   ),
@@ -144,11 +145,11 @@ class _MessageUsState extends State<MessageUs> {
 
   sendMessageToFirebase(BuildContext context) {
     if (_controllerMessage.text.length == 0) {
-      final snackBar = SnackBar(content: Text('Please enter message',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: errorFieldColor,);
+      final snackBar = SnackBar(content: Text('$pleaseEnterMessage',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: errorFieldColor,);
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
     } else if (_controllerMessage.text.length < 5) {
-      final snackBar = SnackBar(content: Text('Message length is short',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: errorFieldColor,);
+      final snackBar = SnackBar(content: Text('$messageLengthIsShort',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: errorFieldColor,);
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
     } else {
@@ -158,7 +159,7 @@ class _MessageUsState extends State<MessageUs> {
         "userId": FirebaseAuth.instance.currentUser.uid,
         "text": _controllerMessage.text
       }).whenComplete(() {
-        final snackBar = SnackBar(content: Text('Message successfully sent',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: secondaryColor,);
+        final snackBar = SnackBar(content: Text('$messageSuccesfullySent',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: secondaryColor,);
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
         Navigator.pop(context);
       });

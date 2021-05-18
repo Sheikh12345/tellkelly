@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tellkelly/Style/app_text.dart';
 import 'package:tellkelly/Style/style_sheet.dart';
 
 class AcknowledgementsPage extends StatefulWidget {
@@ -28,7 +29,7 @@ class _AcknowledgementsPageState extends State<AcknowledgementsPage> {
             },
           ),
           title: Text(
-            "Info & More - Acknowledgements Article",
+            "$infoAndMoreAcknowledgementArticle",
             style: headerText15(size: size.width * 0.04),
             textAlign: TextAlign.left,
             overflow: TextOverflow.visible,
@@ -46,14 +47,12 @@ class _AcknowledgementsPageState extends State<AcknowledgementsPage> {
                   color: Colors.grey,
                 ),
                 Text(
-                  "Acknowledgements Article",
+                  "$acknowledgementArticle",
                   style: storypageHeaderText(size: size.width * 0.066),
                   textAlign: TextAlign.center,
                 ),
                 Column(children: [
-                  Text(
-                    """
-This page is a special thanks to some of the people and companies that have helped get the 'Tell Kelly- She Gives Advice App' what is is today""",
+                  Text("$thanksText",
                     style: storyText(size: size.width * 0.04),
                     softWrap: true,
                     textAlign: TextAlign.justify,
@@ -64,11 +63,11 @@ This page is a special thanks to some of the people and companies that have help
                       Row(
                         children: [
                           Text(
-                            "Google LLC",
+                            "$googleLLC",
                             style: AckText(size: size.width * 0.038),
                           ),
                           Text(
-                            "- Authentication / Database",
+                            "- $authenticationAndDatabase",
                             style: AckTextRole(size: size.width * 0.038),
                           ),
                         ],
@@ -77,7 +76,7 @@ This page is a special thanks to some of the people and companies that have help
                       Row(
                         children: [
                           Text(
-                            "Andrea Bizzotto",
+                            "$andreaBizzotto",
                             style: AckText(size: size.width * 0.038),
                           ),
                         ],
@@ -85,7 +84,7 @@ This page is a special thanks to some of the people and companies that have help
                       Row(
                         children: [
                           Text(
-                            "- Flutter & Dart Programming Expert",
+                            "$flutterAndDart",
                             style: AckTextRole(size: size.width * 0.038),
                           ),
                         ],
@@ -94,11 +93,11 @@ This page is a special thanks to some of the people and companies that have help
                       Row(
                         children: [
                           Text(
-                            "Canva.com",
+                            "$canva",
                             style: AckText(size: size.width * 0.038),
                           ),
                           Text(
-                            "- Splash Images",
+                            "$splashImage",
                             style: AckTextRole(size: size.width * 0.038),
                           ),
                         ],
@@ -107,11 +106,11 @@ This page is a special thanks to some of the people and companies that have help
                       Row(
                         children: [
                           Text(
-                            "Carolina Lach",
+                            "$carolinaLach",
                             style: AckText(size: size.width * 0.038),
                           ),
                           Text(
-                            "- Header Text Fonts",
+                            "$headerTextFont",
                             style: AckTextRole(size: size.width * 0.038),
                           ),
                         ],
@@ -119,14 +118,14 @@ This page is a special thanks to some of the people and companies that have help
                       SizedBox(height: size.height * 0.01),
                       Row(children: [
                         Text(
-                          "Marie Monsalve & Angelina Sanchez",
+                          "$marieMonsalveAndAngelinaSanchez",
                           style: AckText(size: size.width * 0.038),
                         ),
                       ]),
                       Row(
                         children: [
                           Text(
-                            "- Body Text Fonts",
+                            "$bodyTextFonts",
                             style: AckTextRole(size: size.width * 0.038),
                           ),
                         ],
@@ -135,11 +134,11 @@ This page is a special thanks to some of the people and companies that have help
                       Row(
                         children: [
                           Text(
-                            "Peter Bil'ak & Nikola Djurek",
+                            "$peterBilakAndNikolaDjurek",
                             style: AckText(size: size.width * 0.038),
                           ),
                           Text(
-                            "- Button Text Font",
+                            "$btnTextFonts",
                             style: AckTextRole(size: size.width * 0.038),
                           ),
                         ],
@@ -148,11 +147,11 @@ This page is a special thanks to some of the people and companies that have help
                       Row(
                         children: [
                           Text(
-                            "You",
+                            "$you",
                             style: AckText(size: size.width * 0.038),
                           ),
                           Text(
-                            "- Reading & Sharing",
+                            "$readingAndSharing",
                             style: AckTextRole(size: size.width * 0.038),
                           ),
                         ],
@@ -160,13 +159,13 @@ This page is a special thanks to some of the people and companies that have help
                       SizedBox(height: size.height * 0.03),
                       Row(children: [
                         Text(
-                          "And we're sure this list will continue to grow...",
+                          "$continueToGrow",
                           style: storyText(size: size.width * 0.038),
                         )
                       ]),
                       Row(children: [
                         Text(
-                          "So keep an eye out for list updates regularly!",
+                          "$updateRegularly",
                           style: storyText(size: size.width * 0.038),
                         )
                       ])

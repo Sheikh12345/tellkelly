@@ -7,6 +7,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:tellkelly/Common/functions.dart';
 import 'package:tellkelly/Screens/SendAStoryTab/review_story.dart';
 import 'package:tellkelly/Services/AdMob/ad_state.dart';
+import 'package:tellkelly/Style/app_text.dart';
 import 'package:tellkelly/Style/style_sheet.dart';
 
 class SendAStory extends StatefulWidget {
@@ -79,7 +80,7 @@ class _SendAStoryState extends State<SendAStory> {
                     child: Column(
                   children: [
                     Text(
-                      "Send A Story",
+                      "$sendAStory",
                       style: GoogleFonts.courgette(
                           color: primaryColor,
                           fontSize: size.width * 0.06,
@@ -89,7 +90,7 @@ class _SendAStoryState extends State<SendAStory> {
                       height: size.height * 0.02,
                     ),
                     Text(
-                      "Tell Kelly your story...",
+                      "$tellKellyYourStory...",
                       style: GoogleFonts.courgette(
                           color: primaryColor,
                           fontSize: size.width * 0.032,
@@ -114,7 +115,7 @@ class _SendAStoryState extends State<SendAStory> {
                                 errorStyle: errorText(),
                                 focusedErrorBorder: errorFieldBorder,
                                 hintStyle: formFieldHintText(),
-                                labelText: "Story Title",
+                                labelText: "$storyTitle",
                                 focusedBorder: formFieldBorder,
                                 labelStyle: formFieldLabelText(),
                                 enabledBorder: formFieldBorder,
@@ -125,7 +126,7 @@ class _SendAStoryState extends State<SendAStory> {
                             height: size.height * 0.002,
                           ),
                           Text(
-                            "You can leave blank and Kelly will create your title for you",
+                            "$youCanLeaveTitleBlank",
                             style: GoogleFonts.cabin(
                                 color: secondaryColor,
                                 fontSize: size.width * 0.025,
@@ -160,7 +161,7 @@ class _SendAStoryState extends State<SendAStory> {
                           errorStyle: errorText(),
                           focusedErrorBorder: errorFieldBorder,
                           hintStyle: formFieldHintText(),
-                          labelText: "Story",
+                          labelText: "$story",
                           focusedBorder: formFieldBorder,
                           labelStyle: formFieldLabelText(),
                           enabledBorder: formFieldBorder,
@@ -180,7 +181,7 @@ class _SendAStoryState extends State<SendAStory> {
                                 onPressed: () {
                                   sendToReview(context);
                                 },
-                                child: Text(' Review Story ',
+                                child: Text(' $reviewStory ',
                                     style: GoogleFonts.ruda(fontSize: size.width*0.025,color: Colors.black,fontWeight: FontWeight.w600))
                             ),
                             height: size.height * 0.05,
@@ -190,13 +191,13 @@ class _SendAStoryState extends State<SendAStory> {
                             child: MaterialButton(
                                 color: negButtonColor,
                                 child: Text(
-                                    " Delete Title & Story ",
+                                    " $deleteTitleAndStory ",
                                     style: GoogleFonts.ruda(fontSize: size.width*0.025,color: Colors.white,fontWeight: FontWeight.w600)
                                 ),
                                 onPressed: () {
                                   controllerTitle.clear();
                                   controllerStory.clear();
-                                  final snackBar = SnackBar(content: Text('Cleared',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: secondaryColor,);
+                                  final snackBar = SnackBar(content: Text('$cleared',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: secondaryColor,);
 
                                   ScaffoldMessenger.of(context).showSnackBar(snackBar);                                }),
                           )
@@ -213,7 +214,7 @@ class _SendAStoryState extends State<SendAStory> {
                   height: _bannerAd.size.height.toDouble(),
                   width: _bannerAd.size.width.toDouble(),
                   child: Container(
-                    child: Text("Purchased Subscription to remove Ads",style:GoogleFonts.abel(
+                    child: Text("$purchasedSubscription",style:GoogleFonts.abel(
                       color: Colors.white,
                     )),
                   ),
@@ -230,7 +231,7 @@ class _SendAStoryState extends State<SendAStory> {
       ),
     );
   }
-  final snackBar = SnackBar(content: Text('Please enter story and then try',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: errorFieldColor,);
+  final snackBar = SnackBar(content: Text('$pleaseEnterStoryAndThenTry',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: errorFieldColor,);
 
   sendToReview(BuildContext context){
     if(controllerStory.text.length<=0){
@@ -242,7 +243,7 @@ class _SendAStoryState extends State<SendAStory> {
     }else{
         capitalizedTitle = StringUtils.capitalize("${controllerTitle.text??""}",allWords: true);
     }
-      screenPush(context, ReviewStory(storyBody:"Hi Kelly... "+controllerStory.text,storyTitle: capitalizedTitle,));
+      screenPush(context, ReviewStory(storyBody:"$hiKelly... "+controllerStory.text,storyTitle: capitalizedTitle,));
     }
   }
 }

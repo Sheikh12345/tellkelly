@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tellkelly/Style/app_text.dart';
 import 'package:tellkelly/Style/style_sheet.dart';
 
 
@@ -15,10 +16,10 @@ bool btnIsVisible;
 class _CustomBottomSheetState extends State<CustomBottomSheet> {
   Future<void> share(String text) async {
     await FlutterShare.share(
-      title: 'Share App',
+      title: '$shareAppTxt',
       text: '$text',
-      linkUrl: 'app web link will come here',
-      chooserTitle: 'Tell Kelly',
+      linkUrl: '$linkUrl',
+      chooserTitle: '$appName',
     );
   }
 
@@ -64,7 +65,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                       errorStyle: errorText(),
                       focusedErrorBorder: errorFieldBorder,
                       hintStyle: formFieldHintText(),
-                      labelText: "Comment",
+                      labelText: "$comment",
                       focusedBorder: formFieldBorder,
                       labelStyle: formFieldLabelText(),
                       enabledBorder: formFieldBorder,
@@ -83,11 +84,11 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                     if(_controller.text.length>4){
                     share(_controller.text);
                     }else{
-                      final snackBar = SnackBar(content: Text('Text length is short',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: errorFieldColor,);
+                      final snackBar = SnackBar(content: Text('$textLengthIsShort',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: errorFieldColor,);
                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     }
                   },
-                  child: Text('Share App',
+                  child: Text('$shareApp',
                       style: GoogleFonts.ruda(fontSize: size.width*0.04,color: Colors.black,fontWeight: FontWeight.w600))
               ),
               height: size.height * 0.06,

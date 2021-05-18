@@ -9,6 +9,7 @@ import 'package:tellkelly/Screens/HomeTab/home.dart';
 import 'package:tellkelly/Screens/Info&MoreTab/info_and_more.dart';
 import 'package:tellkelly/Screens/PreStoriesTab/previous_stories.dart';
 import 'package:tellkelly/Screens/SendAStoryTab/send_a_story.dart';
+import 'package:tellkelly/Style/app_text.dart';
 import 'package:tellkelly/Style/style_sheet.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -104,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: _selectedIndex == 0 ? secondaryColor : primaryColor,
               ),
               title: Text(
-                "Home",
+                "$home",
                 style: GoogleFonts.courgette(
                     color: _selectedIndex == 0 ? secondaryColor : primaryColor,
                     fontSize: size.width * 0.022),
@@ -117,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: _selectedIndex == 1 ? secondaryColor : primaryColor,
               ),
               title: Text(
-                "Current Stories",
+                "$currentStories",
                 style: GoogleFonts.courgette(
                     color: _selectedIndex == 1 ? secondaryColor : primaryColor,
                     fontSize: size.width * 0.022),
@@ -130,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: _selectedIndex == 2 ? secondaryColor : primaryColor,
               ),
               title: Text(
-                "Previous Stories",
+                "$previousStories",
                 style: GoogleFonts.courgette(
                     color: _selectedIndex == 2 ? secondaryColor : primaryColor,
                     fontSize: size.width * 0.022),
@@ -143,7 +144,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: _selectedIndex == 3 ? secondaryColor : primaryColor,
               ),
               title: Text(
-                "Send A Story",
+                "$sendAStory",
                 style: GoogleFonts.courgette(
                     color: _selectedIndex == 3 ? secondaryColor : primaryColor,
                     fontSize: size.width * 0.022),
@@ -156,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: _selectedIndex == 4 ? secondaryColor : primaryColor,
               ),
               title: Text(
-                "My Best Stories",
+                "$myBestStory",
                 style: GoogleFonts.courgette(
                     color: _selectedIndex == 4 ? secondaryColor : primaryColor,
                     fontSize: size.width * 0.022),
@@ -169,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: _selectedIndex == 5 ? secondaryColor : primaryColor,
               ),
               title: Text(
-                "Info & More",
+                "$infoAndMore",
                 style: GoogleFonts.courgette(
                     color: _selectedIndex == 5 ? secondaryColor : primaryColor,
                     fontSize: size.width * 0.022),
@@ -205,11 +206,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: size.width*0.46,
                   child: Image.asset("images/icon.png")
               ),
-              Text("Tell Kelly",style: GoogleFonts.ruda(color: Colors.black,fontSize: size.width*0.07,fontWeight: FontWeight.w600),),
+              Text("$appName",style: GoogleFonts.ruda(color: Colors.black,fontSize: size.width*0.07,fontWeight: FontWeight.w600),),
               SizedBox(
                 height: size.height*0.01,
               ),
-              Text("Use stars to rate the Tell Kelly App.",style: GoogleFonts.ruda(color: Colors.black,fontSize: size.width*0.035,fontWeight: FontWeight.w600))
+              Text("$useStarsToRateTheTellKellyApp.",style: GoogleFonts.ruda(color: Colors.black,fontSize: size.width*0.035,fontWeight: FontWeight.w600))
 
               ,       SizedBox(
                 height: size.height*0.02,
@@ -230,7 +231,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: size.height*0.02,
               ),
-              Text("Please share a comment (optional)",style: GoogleFonts.ruda(color: Colors.grey[700],fontSize: size.width*0.041,fontWeight: FontWeight.w600),)
+              Text("$pleaseShareAComment",style: GoogleFonts.ruda(color: Colors.grey[700],fontSize: size.width*0.041,fontWeight: FontWeight.w600),)
               ,   TextField(
                 decoration: InputDecoration(
 
@@ -247,7 +248,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: (){
                   sendMessageToFirebase(context);
                 },color: Colors.blue,
-                child: Text("Send Review",style: GoogleFonts.ruda(color: Colors.white),),),
+                child: Text("$sendReview",style: GoogleFonts.ruda(color: Colors.white),),),
 
 
             ],
@@ -263,7 +264,7 @@ class _HomeScreenState extends State<HomeScreen> {
         "message":_controllerMessage.text,
         "rating":_rating
       }).whenComplete(() {
-        final snackBar = SnackBar(content: Text('Review Sent',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: secondaryColor,);
+        final snackBar = SnackBar(content: Text('$reviewSent',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: secondaryColor,);
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
         Navigator.pop(context);
         FirebaseFirestore.instance.collection("Users").doc(FirebaseAuth.instance.currentUser.uid).update({
@@ -271,7 +272,7 @@ class _HomeScreenState extends State<HomeScreen> {
         });
       });
     }else{
-      final snackBar = SnackBar(content: Text('Rating is empty',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: errorFieldColor,);
+      final snackBar = SnackBar(content: Text('$ratingIsEmpty',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: errorFieldColor,);
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }

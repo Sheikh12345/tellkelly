@@ -40,13 +40,15 @@ class FirebaseAuthentication {
     return null;
   }
 
-  // Future<String> signInWithFacebook() async {
-  //   // Log in
-  //   final res = await fb.logIn(permissions: [
-  //     FacebookPermission.publicProfile,
-  //     FacebookPermission.email,
-  //   ]);
-  // }
+  Future<String> signInWithFacebook() async {
+    // Log in
+    final res = await fb.logIn(permissions: [
+      FacebookPermission.publicProfile,
+      FacebookPermission.email,
+    ]);
+  }
+
+
      Future<User> signUpWithEmailAndPass(
         String email, String pass, BuildContext context) async {
       try {

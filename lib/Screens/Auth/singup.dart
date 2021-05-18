@@ -6,8 +6,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:tellkelly/Common/functions.dart';
 import 'package:tellkelly/Providers/provider_error_model.dart';
-import 'package:tellkelly/Screens/Home/homes_screen.dart';
+import 'package:tellkelly/Screens/Home/home_screen.dart';
 import 'package:tellkelly/Services/firebase_authentication.dart';
+import 'package:tellkelly/Style/app_text.dart';
 import 'package:tellkelly/Style/style_sheet.dart';
 import 'components/logo_design.dart';
 
@@ -39,7 +40,7 @@ class _SignUpState extends State<SignUp> {
                 height: size.height * 0.05,
               ),
               Text(
-                "Sign Up",
+                "$signUpText",
                 style: GoogleFonts.courgette(
                     color: primaryColor, fontSize: size.width * 0.045),
               ),
@@ -62,7 +63,7 @@ class _SignUpState extends State<SignUp> {
                     focusedErrorBorder: errorFieldBorder,
                     hintStyle: formFieldHintText(),
                     errorText: nameErr,
-                    labelText: "Name",
+                    labelText: "$name",
                     focusedBorder: formFieldBorder,
                     labelStyle: formFieldLabelText(),
                     enabledBorder: formFieldBorder,
@@ -85,7 +86,7 @@ class _SignUpState extends State<SignUp> {
                     focusedErrorBorder: errorFieldBorder,
                     hintStyle: formFieldHintText(),
                     errorText: emailErr,
-                    labelText: "Email",
+                    labelText: "$email",
                     focusedBorder: formFieldBorder,
                     labelStyle: formFieldLabelText(),
                     enabledBorder: formFieldBorder,
@@ -108,7 +109,7 @@ class _SignUpState extends State<SignUp> {
                     errorStyle: errorText(),
                     focusedErrorBorder: errorFieldBorder,
                     hintStyle: formFieldHintText(),
-                    labelText: "Password",
+                    labelText: "$password",
                     focusedBorder: formFieldBorder,
                     labelStyle: formFieldLabelText(),
                     enabledBorder: formFieldBorder,
@@ -122,7 +123,7 @@ class _SignUpState extends State<SignUp> {
                 padding: const EdgeInsets.only(top: 15),
                 child: MaterialButton(
                   color: secondaryColor,
-                  child: Text('Sign up', style: reviewButton()),
+                  child: Text('$signUpText', style: reviewButton()),
                   onPressed: () async {
                     signUp(context);
                   },
@@ -136,7 +137,7 @@ class _SignUpState extends State<SignUp> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    'Already have an account?',
+                    '$alreadyHaveAnAccount',
                     style: TextStyle(
                       color: secondaryColor,
                     ),
@@ -145,7 +146,7 @@ class _SignUpState extends State<SignUp> {
                     padding:  EdgeInsets.all(size.width*0.02),
                     child: GestureDetector(
                         child: Text(
-                          'Sign In',
+                          '$signInText',
                           style: TextStyle(
                             color: primaryColor,
                             fontWeight: FontWeight.bold,
@@ -172,7 +173,7 @@ class _SignUpState extends State<SignUp> {
         if(EmailValidator.validate(text)){
           emailErr =  null;
         }else{
-          emailErr = "Email is not valid";
+          emailErr = "$emailIsNotValid";
         }
       });
     }else if(code ==2){
@@ -180,7 +181,7 @@ class _SignUpState extends State<SignUp> {
         if(text.length>5){
           passErr = null;
         }else{
-          passErr = "Password is short";
+          passErr = "$passwordIsShort";
         }
       });
     }else if(code ==3){
@@ -188,7 +189,7 @@ class _SignUpState extends State<SignUp> {
         if(text.length>2){
           nameErr = null;
         }else{
-          nameErr = "Name is short";
+          nameErr = "$nameIsShort";
         }
       });
     }

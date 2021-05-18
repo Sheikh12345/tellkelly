@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tellkelly/Style/app_text.dart';
 import 'package:tellkelly/Style/style_sheet.dart';
 
 class NewsAndUpdates extends StatefulWidget {
@@ -23,7 +24,7 @@ class _NewsAndUpdatesState extends State<NewsAndUpdates> with TickerProviderStat
         backgroundColor: Colors.black,
         centerTitle: true,
         title: Text(
-          "Info & More - News & Updates",
+          "$infoAndMoreNewUpdate",
           style: GoogleFonts.courgette(
               color: primaryColor, fontSize: size.width * 0.043),
         ),
@@ -54,7 +55,7 @@ class _NewsAndUpdatesState extends State<NewsAndUpdates> with TickerProviderStat
                           ),
                           errorWidget: (context, url, error) => Icon(Icons.error),
                         ),),
-                    Text("News & Updates",style: GoogleFonts.zillaSlab(color: secondaryColor,
+                    Text("$newsAndUpdate",style: GoogleFonts.zillaSlab(color: secondaryColor,
                         fontWeight: FontWeight.w400,fontSize: size.width*0.06),),
                     Container(
                       margin: EdgeInsets.only(top: size.height*0.01),

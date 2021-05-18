@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:tellkelly/Screens/SendAStoryTab/send_a_story.dart';
 import 'package:tellkelly/Services/AdMob/ad_state.dart';
+import 'package:tellkelly/Style/app_text.dart';
 import 'package:tellkelly/Style/style_sheet.dart';
 
 class ReviewStory extends StatefulWidget {
@@ -77,7 +78,7 @@ class _ReviewStoryState extends State<ReviewStory> {
         ),
         backgroundColor: Colors.black,
         title: Text(
-          "Review Story",
+          "$reviewStory",
           style: GoogleFonts.courgette(
               color: primaryColor, fontSize: size.width * 0.065),
         ),
@@ -98,7 +99,7 @@ class _ReviewStoryState extends State<ReviewStory> {
                         width: size.width,
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          "Title",
+                          "$title",
                           style: GoogleFonts.zillaSlab(
                               color: secondaryColor, fontSize: size.width * 0.06),
                         ),
@@ -106,14 +107,14 @@ class _ReviewStoryState extends State<ReviewStory> {
                       Container(
                           margin: EdgeInsets.only(top: size.height * 0.01),
                           child: Text(
-                            "${widget.storyTitle ?? "Kelly's Title"}",
+                            "${widget.storyTitle ?? "$kellyTitle"}",
                             style: GoogleFonts.zillaSlab(
                                 color: primaryColor, fontSize: size.width * 0.055),
                           )),
                       Container(
                           margin: EdgeInsets.only(top: size.height * 0.027),
                           child: Text(
-                            "Story",
+                            "$story",
                             style: GoogleFonts.zillaSlab(
                                 color: secondaryColor,
                                 fontSize: size.width * 0.055),
@@ -150,12 +151,12 @@ class _ReviewStoryState extends State<ReviewStory> {
                                 color: secondaryColor,
                                 onPressed: () {
 
-                                  final snackBar = SnackBar(content: Text('Editors Mode',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 2,),backgroundColor: secondaryColor,);
+                                  final snackBar = SnackBar(content: Text('$editorsMode',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 2,),backgroundColor: secondaryColor,);
                                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
                                   Navigator.pop(context);
                                 },
-                                child: Text(' Edit Story ',
+                                child: Text(' $editStory ',
                                     style: reviewButton(
                                         size: size.width * 0.035,
                                         color: Colors.black)),
@@ -173,7 +174,7 @@ class _ReviewStoryState extends State<ReviewStory> {
                                         color: Colors.white,
                                       ),
                                       Text(
-                                        "  SEND  ",
+                                        "  $send  ",
                                         style: GoogleFonts.zillaSlab(
                                             color: Colors.white,
                                             fontWeight: FontWeight.w600,
@@ -202,7 +203,7 @@ class _ReviewStoryState extends State<ReviewStory> {
                         height: _bannerAd.size.height.toDouble(),
                         width: _bannerAd.size.width.toDouble(),
                         child: Container(
-                          child: Text("Purchased Subscription to remove Ads",
+                          child: Text("$purchasedSubscription",
                               style: GoogleFonts.abel(
                                 color: Colors.white,
                               )),
@@ -230,7 +231,7 @@ class _ReviewStoryState extends State<ReviewStory> {
       "User Email": FirebaseAuth.instance.currentUser.email,
       "username": userName
     }).whenComplete(() {
-      final snackBar = SnackBar(content: Text('Thank you for sharing your story',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 2,),backgroundColor: secondaryColor,);
+      final snackBar = SnackBar(content: Text('$thankYouForSharingYourStory',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 2,),backgroundColor: secondaryColor,);
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
       Navigator.pop(context);

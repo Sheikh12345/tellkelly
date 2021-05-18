@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tellkelly/Style/app_text.dart';
 
 class GoogleButton extends StatelessWidget {
   final String text;
@@ -22,7 +23,7 @@ class GoogleButton extends StatelessWidget {
                   width: size.width*0.08,
                   margin: EdgeInsets.only(right: size.width*0.02),
                   child: Image.asset("images/google_logo.png",)),
-              Text("Sign in with Google",style: TextStyle(fontWeight: FontWeight.w800,letterSpacing: 0.7,fontSize: size.width*0.035),),
+              Text("$googleBtnTxt",style: TextStyle(fontWeight: FontWeight.w800,letterSpacing: 0.7,fontSize: size.width*0.035),),
               SizedBox(width: size.width*0.06,)
             ],
           ),

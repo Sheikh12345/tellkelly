@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tellkelly/Common/functions.dart';
 import 'package:tellkelly/Providers/font_size_provider.dart';
 import 'package:tellkelly/Screens/Auth/login.dart';
-import 'package:tellkelly/Screens/Home/homes_screen.dart';
+import 'package:tellkelly/Screens/Home/home_screen.dart';
 import 'package:tellkelly/Style/style_sheet.dart';
 
 import '../../main.dart';

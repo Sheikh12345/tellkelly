@@ -9,6 +9,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:tellkelly/Common/functions.dart';
 import 'package:tellkelly/Screens/ReadStoryPage/read_story.dart';
 import 'package:tellkelly/Services/AdMob/loading_screen.dart';
+import 'package:tellkelly/Style/app_text.dart';
 import 'package:tellkelly/Style/style_sheet.dart';
 
 class PreviousStories extends StatefulWidget {
@@ -52,7 +53,7 @@ class _PreviousStoriesState extends State<PreviousStories> with TickerProviderSt
               width: size.width,
               height: size.height*0.08,
               color: Colors.black,
-              child: Text(" Previous Stories",style: GoogleFonts.zillaSlab(color: secondaryColor,fontSize: size.width*0.07),textAlign: TextAlign.center,),
+              child: Text(" $previousStories",style: GoogleFonts.zillaSlab(color: secondaryColor,fontSize: size.width*0.07),textAlign: TextAlign.center,),
             ),
             StreamBuilder(
                 stream: FirebaseFirestore.instance.collection("Live Stories") .where("Category",isEqualTo:"Previous").snapshots(),
@@ -141,7 +142,7 @@ class _PreviousStoriesState extends State<PreviousStories> with TickerProviderSt
                                               child: Row(
                                                 mainAxisAlignment:MainAxisAlignment.end,
                                                 children: [
-                                                Text("Read Story",style: GoogleFonts.ruda(
+                                                Text("$readStory",style: GoogleFonts.ruda(
                                                     color: secondaryColor,
                                                     letterSpacing: 0.1,
                                                     fontSize: size.width*0.032
@@ -172,7 +173,7 @@ class _PreviousStoriesState extends State<PreviousStories> with TickerProviderSt
                           }),
                     );
                   }else if(snapshot.hasError){
-                    return Text("Network Error");
+                    return Text("$networkError");
                   }else{
                     return Container(
                       width: size.width * 0.5,

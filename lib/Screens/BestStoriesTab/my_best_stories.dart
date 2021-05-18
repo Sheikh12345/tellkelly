@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:tellkelly/Common/functions.dart';
 import 'package:tellkelly/LocalStorage/sqflite_database.dart';
 import 'package:tellkelly/Services/AdMob/loading_screen.dart';
+import 'package:tellkelly/Style/app_text.dart';
 import 'package:tellkelly/Style/style_sheet.dart';
 
 
@@ -55,7 +56,7 @@ class _BestStoriesState extends State<BestStories> {
             screenPush(context, LoadingScreen());
           },
           child: Text(
-            "My Best Stories",
+            "$myBestStories",
             style: GoogleFonts.courgette(
                 color: primaryColor, fontSize: size.width * 0.063),
           ),
@@ -115,7 +116,7 @@ class _BestStoriesState extends State<BestStories> {
                               child: GestureDetector(
                                 child: Row(
                                   children: [
-                                    Text("Read Story",
+                                    Text("$readStory",
                                         style: GoogleFonts.ruda(
                                             color: secondaryColor,
                                             letterSpacing: 0.1,
@@ -164,7 +165,7 @@ class _BestStoriesState extends State<BestStories> {
                                 bestStories[index][LocalDatabase.storyName]);
                             if (status == 1) {
                               print("Deleted $status");
-                              final snackBar = SnackBar(content: Text('Removed',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: errorFieldColor,);
+                              final snackBar = SnackBar(content: Text('$removed',style: GoogleFonts.zillaSlab(color: Colors.black,fontWeight: FontWeight.w500,letterSpacing: 0.8),),duration: Duration(seconds: 1,),backgroundColor: errorFieldColor,);
                               ScaffoldMessenger.of(context).showSnackBar(snackBar);
                               var value =
                                   await LocalDatabase.instance.readAll();

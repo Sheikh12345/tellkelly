@@ -11,6 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tellkelly/LocalStorage/sqflite_database.dart';
 import 'package:tellkelly/Providers/font_size_provider.dart';
 import 'package:tellkelly/Services/AdMob/ad_state.dart';
+import 'package:tellkelly/Style/app_text.dart';
 import 'package:tellkelly/Style/style_sheet.dart';
 
 class ReadStory extends StatefulWidget {
@@ -102,7 +103,7 @@ class _ReadStoryState extends State<ReadStory> {
                 },
               ),
               title: Text(
-                "Story",
+                "$story",
                 style: headerText15(size: size.width * 0.05),
                 textAlign: TextAlign.left,
                 overflow: TextOverflow.visible,
@@ -205,7 +206,7 @@ class _ReadStoryState extends State<ReadStory> {
                       margin:
                       EdgeInsets.symmetric(horizontal: size.width * 0.01),
                       child: Text(
-                        "${"Kelly says:\n ${widget.replyBody}"}",
+                        "${"$kellySays:\n ${widget.replyBody}"}",
                         style: GoogleFonts.zillaSlab(
                           fontSize: Provider.of<FontSizeProvider>(context)
                               .getFontSize(),
@@ -230,7 +231,7 @@ class _ReadStoryState extends State<ReadStory> {
                                 print(data);
                               },
                               child: Text(
-                                "Like Me? Add to 'My Best Stories'  ",
+                                "$likeMeAddToMyBestStories  ",
                                 style: GoogleFonts.zillaSlab(
                                   color: primaryColor,
                                   fontSize: size.width * 0.04,
@@ -286,7 +287,7 @@ class _ReadStoryState extends State<ReadStory> {
                             width: _bannerAd.size.width.toDouble(),
                             child: Container(
                               child:
-                                  Text("Purchased Subscription to remove Ads",
+                                  Text("$purchasedSubscription",
                                       style: GoogleFonts.abel(
                                         color: Colors.white,
                                       )),
@@ -368,7 +369,7 @@ class _ReadStoryState extends State<ReadStory> {
                   },
                   color: primaryColor,
                   child: Text(
-                    "Okay",
+                    "$okay",
                     style: GoogleFonts.ruda(
                         fontSize: size.width * 0.03,
                         fontWeight: FontWeight.w600),

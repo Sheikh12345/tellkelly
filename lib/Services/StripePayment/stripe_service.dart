@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:stripe_payment/stripe_payment.dart';
 
-import '../../stripe_model.dart';
+import '../../Model/stripe_model.dart';
 
 class StripeService {
   static String apiBase = 'https://api.stripe.com/v1';
